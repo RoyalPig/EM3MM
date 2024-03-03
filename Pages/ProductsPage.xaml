@@ -1,0 +1,34 @@
+﻿<Page x:Class="EX3MM.Pages.ProductsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EX3MM.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProductsPage">
+    <Page.Resources>
+        <CollectionViewSource x:Key="productViewSource"></CollectionViewSource>
+    </Page.Resources>
+
+    <StackPanel>
+        <TextBlock Text="THIS IS THE Product PAGE" FontSize="48"></TextBlock>
+        <DataGrid Height="200" 
+                  ItemsSource="{Binding Source={StaticResource productViewSource}}"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ProductName}"
+                                    Header="ProductName!" SortDirection="Ascending"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding UnitsInStock}"
+                                    Header="How much in stock?"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding QuantityPerUnit}"
+                                    Header="What counts as 1 unit?"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding UnitPrice, StringFormat=N2}"
+                                    Header="How much is it gunna cost me?"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="SaveButton" Content="Save" Click="SaveButton_Click"></Button>
+
+
+    </StackPanel>
+</Page>
